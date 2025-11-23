@@ -1,4 +1,4 @@
-name: Run tests
+name: Run Tests with Secrets
 
 on:
   push:
@@ -8,14 +8,19 @@ on:
 
 jobs:
   test:
-    name: Test calculator
+    name: Test Calculator
     runs-on: ubuntu-latest
+
+    # Set environment variables for the entire job
+    env:
+      DEBUG_MODE: "true"
+      DATABASE_URL: "sqlite:///test.db"
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -33,5 +38,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run pytests
+      # Run tests with secrets
+      - name: Run pytest
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
         run: pytest -v
