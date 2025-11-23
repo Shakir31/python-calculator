@@ -23,7 +23,8 @@ def test_multiply():
     assert multiply(-5, 2) == -10
 
 
-@pytest.mark.not_slow
+#marked as slow just to test the workflow
+@pytest.mark.slow
 def test_divide():
     assert divide(4, 2) == 2
     assert divide(2, 2) == 1
