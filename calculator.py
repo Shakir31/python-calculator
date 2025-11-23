@@ -1,7 +1,9 @@
 # calculator.py
 import os
 
-DEBUG = os.getenv('DEBUG_MODE', 'false').lower() == 'true'
+
+DEBUG = os.getenv("DEBUG_MODE", "false").lower() == "true"
+
 
 def add(a, b):
     """Return the sum of two numbers."""
@@ -10,6 +12,7 @@ def add(a, b):
         print(f"DEBUG: {a} + {b} = {result}")
     return result
 
+
 def subtract(a, b):
     """Return the difference of two numbers."""
     result = a - b
@@ -17,12 +20,14 @@ def subtract(a, b):
         print(f"DEBUG: {a} - {b} = {result}")
     return result
 
+
 def multiply(a, b):
     """Return the product of two numbers."""
     result = a * b
     if DEBUG:
-        print(f"DEBUG: {a} × {b} = {result}")
+        print(f"DEBUG: {a} * {b} = {result}")
     return result
+
 
 def divide(a, b):
     """Return the quotient of two numbers."""
@@ -30,5 +35,5 @@ def divide(a, b):
         raise ValueError("Cannot divide by zero")
     result = a / b
     if DEBUG:
-        print(f"DEBUG: {a} ÷ {b} = {result}")
+        print(f"DEBUG: {a} / {b} = {result}")
     return result
