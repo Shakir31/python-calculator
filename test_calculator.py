@@ -1,5 +1,5 @@
 import pytest
-from calculator import add, subtract, multiply, divide
+from calculator import add, subtract, multiply, divide, power
 
 
 @pytest.mark.not_slow
@@ -35,3 +35,11 @@ def test_divide():
 def test_divide_by_zero():
     with pytest.raises(ValueError):
         divide(10, 0)
+
+
+@pytest.mark.not_slow
+def test_power():
+    assert power(2, 3) == 8
+    assert power(5, 0) == 1
+    assert power(2, -1) == 0.5
+    assert power(9, 0.5) == 3
